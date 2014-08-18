@@ -5,6 +5,9 @@ var logger = require('../lib/logger');
 
 var logModel = require('./system/models/logModel');
 var userModel = require('./system/models/userModel');
+var groupModel = require('./system/models/groupModel');
+var interestModel = require('./system/models/interestModel');
+var advancementModel = require('./system/models/advancementModel');
 
 function ScouterDb() {
     'use strict';
@@ -36,8 +39,11 @@ function ScouterDb() {
             logger.info('Connected to ' + CONFIG.db + ' on ' + CONFIG.host + ':' + CONFIG.port);
 
             self.models = {
-                log : new logModel(db),
-                user: new userModel(db)
+                log        : new logModel(db),
+                user       : new userModel(db),
+                group      : new groupModel(db),
+                advancement: new advancementModel(db),
+                interest   : new interestModel(db)
             };
 
             if (callback) {
